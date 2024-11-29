@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Arts and Devices — things Alice made, from embroidery and sewing to useful objects." />
+  <title>aliceseueue</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="icon.ico" type="image/x-icon" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">aliceseueue</a>
+    <nav>
+      <a href="cv.html">CV</a>
+      <a href="circus.html">Circus</a>
+      <a href="artworks.html">Arts and Devices</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <section class="page-hero">
+      <p class="eyebrow">portfolio</p>
+      <h1>Arts &amp; Devices</h1>
+      <p>A little gallery of things that I've made, to keep track mainly. I'm still filling this one</p>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">all</button>
+        <button class="filter-btn" data-filter="embroidery">embroidery</button>
+        <button class="filter-btn" data-filter="sewing">sewing</button>
+        <button class="filter-btn" data-filter="devices">devices</button>
+      </div>
+    </section>
+
+    <section class="gallery-grid" id="gallery">
+
+      <figure data-category="devices">
+        <img
+          src="assets/Art/vinc.jpg"
+          alt="An incense holder"
+          loading="lazy"
+        />
+        <figcaption>
+          <span class="cap-title">Incense holder</span>
+        </figcaption>
+      </figure>
+
+      <figure data-category="embroidery">
+        <img
+          src="assets/Art/snake.jpg"
+          alt="A snake that I made for Nicola"
+          loading="lazy"
+        />
+        <figcaption>
+          <span class="cap-title">A snake for Nicola</span>
+        </figcaption>
+      </figure>
+
+      <figure data-category="devices">
+        <img
+          src="assets/Art/blocks.jpg"
+          alt="Alice and Nicola hs blocks"
+          loading="lazy"
+        />
+        <figcaption>
+          <span class="cap-title">Alice and Nicola hs blocks</span>
+        </figcaption>
+      </figure>
+
+      <figure data-category="embroidery">
+        <img
+          src="assets/Art/emb1.jpg"
+          alt="Embroidery"
+          loading="lazy"
+        />
+        <figcaption>
+          <span class="cap-title">Embroidery</span>
+        </figcaption>
+      </figure>
+
+      <figure data-category="sewing">
+        <img
+          src="assets/Art/pants.jpg"
+          alt="Sewn pants"
+          loading="lazy"
+        />
+        <figcaption>
+          <span class="cap-title">Pants</span>
+        </figcaption>
+      </figure>
+
+    </section>
+
+  </div>
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" id="lb-close" aria-label="Close">&#215;</button>
+  <button class="lightbox-prev" id="lb-prev" aria-label="Previous">&#8592;</button>
+  <img src="" alt="" id="lb-img" />
+  <button class="lightbox-next" id="lb-next" aria-label="Next">&#8594;</button>
+  <div class="lightbox-caption">
+    <span class="cap-title" id="lb-title"></span>
+    <span class="cap-sub" id="lb-sub"></span>
+  </div>
+</div>
+
+<script>
+  /* ── Filter ──────────────────────────────────────────── */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const figures    = document.querySelectorAll('#gallery figure');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cat = btn.dataset.filter;
+      figures.forEach(fig => {
+        if (cat === 'all' || fig.dataset.category === cat) {
+          fig.classList.remove('hidden');
+        } else {
+          fig.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  /* ── Lightbox ────────────────────────────────────────── */
+  const lightbox = document.getElementById('lightbox');
+  const lbImg    = document.getElementById('lb-img');
+  const lbTitle  = document.getElementById('lb-title');
+  const lbSub    = document.getElementById('lb-sub');
+
+  let visibleFigs = [];
+  let current     = 0;
+
+  function getVisible() {
+    return [...figures].filter(f => !f.classList.contains('hidden'));
+  }
+
+  function openLightbox(fig) {
+    visibleFigs = getVisible();
+    current     = visibleFigs.indexOf(fig);
+    showSlide(current);
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function showSlide(idx) {
+    const fig = visibleFigs[idx];
+    const img = fig.querySelector('img');
+    const cap = fig.querySelector('figcaption');
+    lbImg.src           = img.src;
+    lbImg.alt           = img.alt;
+    lbTitle.textContent = cap.querySelector('.cap-title')?.textContent ?? '';
+    lbSub.textContent   = cap.querySelector('.cap-sub')?.textContent ?? '';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  figures.forEach(fig => {
+    fig.addEventListener('click', () => openLightbox(fig));
+  });
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+
+  document.getElementById('lb-prev').addEventListener('click', () => {
+    current = (current - 1 + visibleFigs.length) % visibleFigs.length;
+    showSlide(current);
+  });
+
+  document.getElementById('lb-next').addEventListener('click', () => {
+    current = (current + 1) % visibleFigs.length;
+    showSlide(current);
+  });
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  { current = (current - 1 + visibleFigs.length) % visibleFigs.length; showSlide(current); }
+    if (e.key === 'ArrowRight') { current = (current + 1) % visibleFigs.length; showSlide(current); }
+  });
+</script>
+
+</body>
+</html>

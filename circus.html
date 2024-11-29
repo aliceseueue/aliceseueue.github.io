@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>aliceseueue</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="icon.ico" type="image/x-icon" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">aliceseueue</a>
+      <nav>
+        <a href="cv.html">CV</a>
+        <a href="circus.html">Circus</a>
+        <a href="artworks.html">Arts and Devices</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-content">
+    <section class="page-hero">
+      <h1>Circus and performances</h1>
+    </section>
+
+    <section class="video-grid">
+      <article class="video-card">
+        <h2>It's oh so quiet</h2>
+        <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/5fj5f7FscU8" title="It's oh so quiet" frameborder="0" allowfullscreen></iframe>        
+    </div>
+      </article>
+
+      <article class="video-card">
+        <h2>No Drama Duo trailer</h2>
+        <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/lrPb7eypWY0" title="No Drama Duo trailer" frameborder="0" allowfullscreen></iframe>        
+    </div>
+      </article>
+
+      <article class="video-card">
+        <h2>Contortion tango</h2>
+        <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/UNftRNmsrO4" title="Contortion tango" frameborder="0" allowfullscreen></iframe>        
+    </div>
+      </article>
+    </section>
+
+    <div class="cv-divider"></div>
+
+    <h2 class="section-title">Photo gallery</h2>
+
+    <section class="photo-gallery" id="circus-gallery">
+    <div class="gallery-grid">
+        <figure>
+        <img src="assets/Circus%20gallery/img3.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure>
+        <img src="assets/Circus%20gallery/img4.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure>
+        <img src="assets/Circus%20gallery/img5.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure class="gallery-hidden">
+        <img src="assets/Circus%20gallery/img6.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure class="gallery-hidden">
+        <img src="assets/Circus%20gallery/img7.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure class="gallery-hidden">
+        <img src="assets/Circus%20gallery/img8.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure class="gallery-hidden">
+        <img src="assets/Circus%20gallery/img9.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure class="gallery-hidden">
+        <img src="assets/Circus%20gallery/img10.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure class="gallery-hidden">
+        <img src="assets/Circus%20gallery/img11.JPG" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure class="gallery-hidden">
+        <img src="assets/Circus%20gallery/img12.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure class="gallery-hidden">
+        <img src="assets/Circus%20gallery/img13.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure class="gallery-hidden">
+        <img src="assets/Circus%20gallery/img14.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure class="gallery-hidden">
+        <img src="assets/Circus%20gallery/img1.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+        <figure class="gallery-hidden">
+        <img src="assets/Circus%20gallery/img2.jpg" alt="Circus performance" loading="lazy" />
+        </figure>
+    </div>
+    <button class="gallery-toggle" id="gallery-toggle">Show more ↓</button>
+    </section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" id="lb-close" aria-label="Close">&#215;</button>
+  <button class="lightbox-prev" id="lb-prev" aria-label="Previous">&#8592;</button>
+  <img src="" alt="" id="lb-img" />
+  <button class="lightbox-next" id="lb-next" aria-label="Next">&#8594;</button>
+</div>
+
+    <div class="cv-divider"></div>
+
+    <section class="detail-card">
+    <h2>Training playlist</h2>
+    <p>Watch my training videos on YouTube:</p>
+    <p><a href="https://youtube.com/playlist?list=PLsXtyWfNt0f20GKSTwpgHUgIVOu-RJPtf&si=koez1W_O_QDJyAcJ" target="_blank" rel="noreferrer">Watch on YouTube →</a></p></section>
+  </main>
+<script>
+  /* ── Gallery toggle ─────────────────────────────────── */
+  const toggleBtn = document.getElementById('gallery-toggle');
+  const hiddenFigs = document.querySelectorAll('.gallery-hidden');
+  toggleBtn.addEventListener('click', () => {
+    const isHidden = hiddenFigs[0].classList.contains('gallery-hidden');
+    hiddenFigs.forEach(f => f.classList.toggle('gallery-hidden'));
+    toggleBtn.textContent = isHidden ? 'Show less ↑' : 'Show more ↓';
+  });
+
+  /* ── Lightbox ────────────────────────────────────────── */
+  const lightbox = document.getElementById('lightbox');
+  const lbImg    = document.getElementById('lb-img');
+  const figures  = document.querySelectorAll('#circus-gallery figure');
+  let current    = 0;
+
+  function openLightbox(fig) {
+    const imgs = [...document.querySelectorAll('#circus-gallery figure img')];
+    current = imgs.indexOf(fig.querySelector('img'));
+    showSlide(current);
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function showSlide(idx) {
+    const imgs = document.querySelectorAll('#circus-gallery figure img');
+    lbImg.src = imgs[idx].src;
+    lbImg.alt = imgs[idx].alt;
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  figures.forEach(fig => {
+    fig.addEventListener('click', () => openLightbox(fig));
+  });
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-prev').addEventListener('click', () => {
+    const total = document.querySelectorAll('#circus-gallery figure img').length;
+    current = (current - 1 + total) % total;
+    showSlide(current);
+  });
+  document.getElementById('lb-next').addEventListener('click', () => {
+    const total = document.querySelectorAll('#circus-gallery figure img').length;
+    current = (current + 1) % total;
+    showSlide(current);
+  });
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    const total = document.querySelectorAll('#circus-gallery figure img').length;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  { current = (current - 1 + total) % total; showSlide(current); }
+    if (e.key === 'ArrowRight') { current = (current + 1) % total; showSlide(current); }
+  });
+</script>
+</body>
+</html>

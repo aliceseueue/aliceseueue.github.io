@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CV of Alice Cariboni — Software Engineer with an interest in firmware, and operating systems." />
+  <title>CV — aliceseueue</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="icon.ico" type="image/x-icon" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">aliceseueue</a>
+    <nav>
+      <a href="cv.html">CV</a>
+      <a href="circus.html">Circus</a>
+      <a href="artworks.html">Arts and Devices</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="cv-hero">
+      <div class="cv-hero-text">
+        <p class="eyebrow">curriculum vitae</p>
+        <h1>Alice Cariboni</h1>
+        <p class="cv-role">Software Engineer</p>
+        <p class="cv-tagline">
+          Hello! I am Alice, a contortionist, circus artist, and computer engineer.
+          Though these might seem like very different worlds, I see a common
+          denominator: solving problems, staying focused, exercising patience,
+          and conducting long-term research that may or may not yield results
+          depending on the approach taken. I define myself as a curious and
+          creative person, always eager to learn. Over the next year, I’d like to
+          develop my skills further in firmware development and operating
+          systems.
+        </p>
+        <div class="cv-meta">
+          <span><a href="mailto:alice.cariboni@gmail.com">alice.cariboni@gmail.com</a></span>
+          <span>Grenoble, France</span>
+          <span>+33 06 77 74 28 65</span>
+        </div>
+      </div>
+      <a class="cv-download" href="cv/CV_Alice_Cariboni.pdf" download>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download PDF
+      </a>
+    </section>
+
+    <div class="cv-divider"></div>
+
+    <!-- Experience -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">Experience</h2>
+      <div class="cv-entries">
+
+        <article class="cv-entry">
+          <div class="cv-entry-header">
+            <div>
+              <h3>Software Engineer – HPC R&amp;D</h3>
+              <span class="cv-company">Eviden (Atos Group)</span>
+            </div>
+            <span class="cv-date">Jan 2025 – Present</span>
+          </div>
+          <ul class="cv-list">
+            <li>Development and optimization in C of low-level MPI components, in particular components of one-sided communications and use of performance evaluation tools (PAPI).</li>
+            <li>Development of a collective engine component that plugs into Open MPI to abstract and select messaging layers and implementation of a shared-memory collective component for UCC utilizing shared memory for efficient inter-process data movement.</li>
+            <li>Implementation of a code coverage pipeline for Open MPI using Bash scripting and OSU benchmarks.</li>
+            <li>Management of delivery pipelines for DOCA OFED, including CI/CD automation, packaging, release processes, and automation of deployment and installation processes for exascale clusters using Ansible, Kubernetes, and occasional Bash scripting.</li>
+            <li>Testing and validation of all code and components on real HPC clusters using SLURM scheduler.</li>
+          </ul>
+        </article>
+
+        <article class="cv-entry">
+          <div class="cv-entry-header">
+            <div>
+              <h3>Master Thesis</h3>
+              <span class="cv-company">Diaxxo (ETH Zurich)</span>
+            </div>
+            <span class="cv-date">Sept 2023 – March 2024</span>
+          </div>
+          <ul class="cv-list">
+            <li>Firmware development in C for multitasking RTOS on ESP32: concurrent tasks for real sensor acquisition (ADC thermistors), safety monitoring, serial communication, and PCR execution with deterministic timing constraints.</li>
+            <li>Temperature control strategies combining machine learning and PID autotuning within hybrid bang-bang and feedback control architectures.</li>
+            <li>Virtual temperature sensor module with thermal dynamics modeling for hardware-independent testing and fail-safe mechanisms.</li>
+            <li>Python backend tools for serial communication, parameter tuning, data visualization, and firmware validation.</li>
+          </ul>
+        </article>
+
+        <article class="cv-entry">
+          <div class="cv-entry-header">
+            <div>
+              <h3>Software Developer</h3>
+              <span class="cv-company">WEART</span>
+            </div>
+            <span class="cv-date">March – Sept 2022</span>
+          </div>
+          <ul class="cv-list">
+            <li>Development of UWP Applications in C#/XAML, integration of new functionalities in an existing middleware application, porting of Processing scripts in C#, and expansion of a serial communication protocol.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="cv-divider"></div>
+
+    <!-- Education -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">Education</h2>
+      <div class="cv-entries">
+
+        <article class="cv-entry">
+          <div class="cv-entry-header">
+            <div>
+              <h3>M.Sc. in Computer Science and Engineering</h3>
+              <span class="cv-company">Politecnico di Milano</span>
+            </div>
+            <span class="cv-date">Sept 2021 – April 2024</span>
+          </div>
+          <p class="cv-entry-note">Final grade: 102/110 &nbsp;·&nbsp; Thesis: "Design and implementation of a temperature control strategy for a high-speed heating/cooling module"</p>
+          <p class="cv-entry-note">Relevant courses: Sensor Systems, Code Transformation and Optimization, Internet of Things, Embedded Systems, Advanced Operating Systems.</p>
+        </article>
+
+        <article class="cv-entry">
+          <div class="cv-entry-header">
+            <div>
+              <h3>B.Sc. in Computer Engineering</h3>
+              <span class="cv-company">Politecnico di Milano</span>
+            </div>
+            <span class="cv-date">Sept 2018 – Sept 2021</span>
+          </div>
+          <p class="cv-entry-note">Final grade: 96/110</p>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="cv-divider"></div>
+
+    <!-- Personal Projects -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">Personal Projects</h2>
+      <div class="cv-projects">
+
+        <article class="cv-project">
+          <h3>I2S driver in Zephyr (WIP)</h3>
+          <p>Capturing live audio stream using SAI interface on a STM32N6. Debugged Zephyr OS drivers for this new board variant by analyzing SAI, DMA, and GPIO registers using the datasheet and runtime register value inspection.</p>
+          <p class="cv-project-tech">C</p>
+        </article>
+
+        <article class="cv-project">
+          <h3>Miosix OS porting <a href="https://github.com/EmilioCorigliano/miosix-kernel/tree/stm32h723zg">↗</a></h3>
+          <p>Porting of <a href="https://miosix.org/">Miosix OS Kernel</a> on a STM32H723, including writing low-level drivers for USART, DMA, and SDMMC.</p>
+          <p class="cv-project-tech">C</p>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="cv-divider"></div>
+
+    <!-- Skills & Languages -->
+    <section class="cv-section cv-section-cols">
+
+      <div>
+        <h2 class="cv-section-title">Focus areas</h2>
+        <ul class="cv-tags">
+          <li>Firmware</li>
+          <li>Operating Systems</li>
+          <li>Code Optimisation</li>
+          <li>Embedded Systems</li>
+          <li>RTOS</li>
+          <li>C / C++</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="cv-section-title">Languages</h2>
+        <ul class="cv-lang-list">
+          <li><span>Italian</span><span class="cv-lang-level">Native</span></li>
+          <li><span>English</span><span class="cv-lang-level">Full professional proficiency – TOEIC C1</span></li>
+          <li><span>French</span><span class="cv-lang-level">Beginner</span></li>
+        </ul>
+      </div>
+
+    </section>
+
+  </div>
+</main>
+
+</body>
+</html>
