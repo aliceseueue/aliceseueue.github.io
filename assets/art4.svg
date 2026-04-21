@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Artwork placeholder">
+  <rect width="600" height="600" rx="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="14" />
+  <path d="M130 470c90-200 260-210 350-100" fill="none" stroke="#f43f5e" stroke-width="26" stroke-linecap="round" />
+  <path d="M160 320c40-40 120-30 170 0 54 32 130 20 170-20" fill="none" stroke="#10b981" stroke-width="22" stroke-linecap="round" />
+  <text x="300" y="560" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" fill="#475569">Art 4</text>
+</svg>

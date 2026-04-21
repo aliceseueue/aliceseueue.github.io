@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Octopussi Cabaret — aliceseueue</title>
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="icon.ico" type="image/x-icon" />
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a class="brand" href="index.html">aliceseueue</a>
+<nav>
+<a href="cv.html">CV</a>
+<a href="circus.html">Circus</a>
+<a href="artworks.html">Arts and Devices</a>
+</nav>
+</div>
+</header>
+<main class="container page-content">
+<section class="page-hero">
+<a href="circus.html">← Back</a>
+<h1>Octopussi Cabaret</h1>
+<p>Photos by Valerio Iglio</p>
+</section>
+<div class="thumb-grid">
+  <img src="assets/Octopussi/octo_1.jpg" onclick="openLightbox(0)" />
+  <img src="assets/Octopussi/octo_2.jpg" onclick="openLightbox(1)" />
+  <img src="assets/Octopussi/octo_3.jpg" onclick="openLightbox(2)" />
+  <img src="assets/Octopussi/octo_4.jpg" onclick="openLightbox(3)" />
+  <img src="assets/Octopussi/octo_5.jpg" onclick="openLightbox(4)" />
+  <img src="assets/Octopussi/octo_6.jpg" onclick="openLightbox(5)" />
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-prev" onclick="navigate(-1)">&#8592;</button>
+  <img id="lightbox-img" src="" alt="" />
+  <button class="lightbox-next" onclick="navigate(1)">&#8594;</button>
+</div>
+
+<script>
+const images = [
+  'assets/Octopussi/octo_1.jpg',
+  'assets/Octopussi/octo_2.jpg',
+  'assets/Octopussi/octo_3.jpg',
+  'assets/Octopussi/octo_4.jpg',
+  'assets/Octopussi/octo_5.jpg',
+  'assets/Octopussi/octo_6.jpg',
+];
+
+let currentIndex = 0;
+
+function openLightbox(index) {
+  currentIndex = index;
+  document.getElementById('lightbox-img').src = images[currentIndex];
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function navigate(dir) {
+  currentIndex = (currentIndex + dir + images.length) % images.length;
+  document.getElementById('lightbox-img').src = images[currentIndex];
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+</script>
+</main>
+</body>
+</html>
